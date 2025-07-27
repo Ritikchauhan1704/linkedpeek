@@ -1,44 +1,17 @@
-"use client";
+import KeywordsForm from "../components/KeywordsForm";
 
-import { useState } from "react";
-
-export default function Home() {
-  const [messages, setMessages] = useState<string[]>([]);
-  const [keyword, setKeyword] = useState<string>("");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setMessages([...messages, keyword]);
-    console.log(keyword);
-    setKeyword("");
-  };
-
-  const postToBackend = () => {
-    fetch("http://localhost:8080", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ messages }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
-
+export default function HomePage() {
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="border-1"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-        <button className="border-1">enter</button>
-      </form>
-      <button className="border-1" onClick={postToBackend}>
-        post to backend
-      </button>
-    </div>
+    <main className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6 border border-blue-100">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-blue-800 mb-4">
+          🔍 Scrape LinkedIn Posts by Keyword
+        </h1>
+        <p className="text-gray-600 mb-6 text-sm sm:text-base">
+          Enter keywords to find recent LinkedIn posts that match. Results will be displayed below.
+        </p>
+        <KeywordsForm />
+      </div>
+    </main>
   );
 }
