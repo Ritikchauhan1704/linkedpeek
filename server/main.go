@@ -2,15 +2,19 @@ package main
 
 import (
 	"fmt"
-	
 	"net/http"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
+type Message struct {
+	ID   string `json:"id"`
+	Text string `json:"text"`
+}
+
 type Messages struct {
-	Message []string `json:"messages"`
+	Message []Message `json:"messages"`
 }
 
 func main() {
@@ -22,21 +26,19 @@ func main() {
 	})
 
 	r.POST("/", func(c *gin.Context) {
-		fmt.Println("***********************************************************")
-		fmt.Println("got message")
-		// body, _ := io.ReadAll(c.Request.Body)
-		// fmt.Println(string(body))
-
-		fmt.Println("***********************************************************")
 		var messages Messages
 
 		if err := c.BindJSON(&messages); err != nil {
-			c.JSON(http.StatusBadRequest,gin.H{"error":"bad request"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
 			return
 		}
-		fmt.Println(messages.Message)
-		c.JSON(http.StatusOK, gin.H{"message":"success"})
 
+		fmt.Println("Received messages:", messages.Message)
+
+		c.JSON(http.StatusOK, gin.H{
+			"status":  "success",
+			"message": "messages received",
+		})
 	})
 
 	r.Run(":8080")
