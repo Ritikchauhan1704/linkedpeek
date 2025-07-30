@@ -1,4 +1,5 @@
 import KeywordsForm from "../components/KeywordsForm";
+import ProfileScraperForm from "../components/ProfileScraperForm";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
           Enter keywords to find recent LinkedIn posts that match. Results will be displayed below.
         </p>
         <KeywordsForm />
+        <ProfileScraperForm />
       </div>
     </main>
   );
