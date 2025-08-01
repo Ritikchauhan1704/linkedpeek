@@ -1,17 +1,14 @@
 # LinkedIn Scraper Project
-Under Construction
 
-## Notes
-- User wants a LinkedIn scraper for posts related to given keywords.
-- Frontend should be built in Next.js.
-- Backend should be implemented in Go.
-- Project should include a README with an "Under Construction" message.
+🚧 **Under Construction** 🚧
 
-## Task List
-- [ ] Create README.md with "Under Construction" message
-- [ ] Set up Next.js frontend project
-- [ ] Set up Go backend project
-- [ ] Implement LinkedIn scraping logic (backend)
-- [ ] Connect frontend to backend
-- [ ] Add keyword-based post search functionality
+This project is currently in development. Please check back later for updates and documentation.
 
+## Current Features
+
+- Keyword entry form for searching LinkedIn posts (UI only)
+- Editable and removable keyword list (UI only)
+- LinkedIn public profile scraper (backend, Go)
+- REST API endpoint to scrape LinkedIn profiles
+- Simple health check API endpoint
+- Next.js frontend and Go backend setup
